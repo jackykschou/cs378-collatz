@@ -36,7 +36,7 @@ int collatz_eval (int i, int j) {
     
     int v = 1;
     int len; //holding the result for each invocation of cycle_length
-    int x, y;
+    int i, j;
 
     if(i > j)
     {
