@@ -1,17 +1,23 @@
-// ----------------------------
-// projects/collatz/Collatz.c++
+// -------------------------------
+// projects/collatz/RunCollatz.c++
 // Copyright (C) 2013
 // Glenn P. Downing
-// ----------------------------
+// -------------------------------
+
+// -------
+// defines
+// -------
+
+#ifdef ONLINE_JUDGE
+#define NDEBUG
+#endif
 
 // --------
 // includes
 // --------
 
 #include <cassert>  // assert
-#include <iostream> // endl, istream, ostream
-
-#include "Collatz.h"
+#include <iostream> // cin, cout, ios_base, endl, istream, ostream
 
 // ------------
 // collatz_read
@@ -25,6 +31,23 @@ bool collatz_read (std::istream& r, int& i, int& j) {
     assert(i > 0);
     assert(j > 0);
     return true;}
+
+//----------
+//cycle_length
+//----------
+
+int cycle_length(int x)
+{
+    int result = 1;
+
+    while(x != 1)
+    {
+        result++;
+        x = (x % 2) ? (x * 3 + 1) : (x / 2);
+    }
+
+    return result;
+}
 
 // ------------
 // collatz_eval
@@ -41,20 +64,20 @@ int collatz_eval (int i, int j) {
     if(i > j)
     {
         x = j;
-	   y = i;
+        y = i;
     }
     else
     {
-	   y = j;
-	   x = i;
+       y = j;
+       x = i;
     }
 
     for(; x <= y; x++)
     {
-    	if((len = cycle_length(x)) > v)
-    	{
-    		v = len;
-    	}
+        if((len = cycle_length(x)) > v)
+        {
+            v = len;
+        }
     }
 
     assert(v > 0);
@@ -81,19 +104,14 @@ void collatz_solve (std::istream& r, std::ostream& w) {
         const int v = collatz_eval(i, j);
         collatz_print(w, i, j, v);}}
 
-//----------
-//cycle_length
-//----------
 
-int cycle_length(int x)
-{
-	int result = 1;
+// ----
+// main
+// ----
 
-	while(x != 1)
-	{
-		result++;
-		x = (x % 2) ? (x * 3 + 1) : (x / 2);
-	}
+int main () {
+    using namespace std;
+    ios_base::sync_with_stdio(false); // turn off synchronization with C I/O
+    collatz_solve(cin, cout);
+    return 0;}
 
-	return result;
-}
