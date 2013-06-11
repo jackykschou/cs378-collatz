@@ -1,73 +1,85 @@
-/*
-CS378 Ka Seng Chou
-Projet#1 SphereCollatz.c++
-this file is used to submit to Shpere for testing
-*/
+// ----------------------------
+// projects/collatz/Collatz.c++
+// Copyright (C) 2013
+// Glenn P. Downing
+// ----------------------------
 
-#include <iostream> //for using cout
-#include <cstdio> //for using scanf, printf
+// --------
+// includes
+// --------
 
-//------------------
-//function prototypes
-//------------------
-void process_collatz();
-void process_pair(int, int);
-int cycle_length(int);
+#include <cassert>  // assert
+#include <iostream> // endl, istream, ostream
 
-//----
-//main
-//----
+#include "Collatz.h"
 
-int main()
-{
-	process_collatz();
-	return 0;
-}
+// ------------
+// collatz_read
+// ------------
 
-//----------
-//process_collatz
-//----------
+bool collatz_read (std::istream& r, int& i, int& j) {
+    r >> i;
+    if (!r)
+        return false;
+    r >> j;
+    assert(i > 0);
+    assert(j > 0);
+    return true;}
 
-void process_collatz()
-{
-	int x, y;
-	while(scanf("%d %d", &x, &y) != EOF)
-	{
-		process_pair(x, y);
-	}
-}
+// ------------
+// collatz_eval
+// ------------
 
-//----------
-//process_pair
-//----------
+int collatz_eval (int i, int j) {
+    assert(i > 0);
+    assert(j > 0);
+    
+    int v = 1;
+    int len; //holding the result for each invocation of cycle_length
+    int x, y;
 
-void process_pair(int x, int y)
-{
-	int max = 1;
-	int len; //holding the result for each invocation of cycle_length
-	int i, j;
+    if(i > j)
+    {
+        x = j;
+	   y = i;
+    }
+    else
+    {
+	   y = j;
+	   x = i;
+    }
 
-	if(x > y)
-	{
-		i = y;
-		j = x;
-	}
-	else
-	{
-		i = x;
-		j = y;
-	}
+    for(; x <= y; x++)
+    {
+    	if((len = cycle_length(x)) > v)
+    	{
+    		v = len;
+    	}
+    }
 
-	for(; i <= j; i++)
-	{
-		if((len = cycle_length(i)) > max)
-		{
-			max = len;
-		}
-	}
+    assert(v > 0);
+    return v;}
 
-	printf("%d %d %d\n",x, y, max);
-}
+// -------------
+// collatz_print
+// -------------
+
+void collatz_print (std::ostream& w, int i, int j, int v) {
+    assert(i > 0);
+    assert(j > 0);
+    assert(v > 0);
+    w << i << " " << j << " " << v << std::endl;}
+
+// -------------
+// collatz_solve
+// -------------
+
+void collatz_solve (std::istream& r, std::ostream& w) {
+    int i;
+    int j;
+    while (collatz_read(r, i, j)) {
+        const int v = collatz_eval(i, j);
+        collatz_print(w, i, j, v);}}
 
 //----------
 //cycle_length

@@ -41,20 +41,20 @@ int collatz_eval (int i, int j) {
     if(i > j)
     {
         x = j;
-	y = i;
+	    y = i;
     }
     else
     {
-	y = j;
-	x = i;
+	   y = j;
+	   x = i;
     }
 
     for(; x <= y; x++)
     {
-	if((len = cycle_length(x)) > v)
-	{
-		v = len;
-	}
+    	if((len = cycle_length(x)) > v)
+    	{
+    		v = len;
+    	}
     }
 
     assert(v > 0);

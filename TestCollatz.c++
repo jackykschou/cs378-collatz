@@ -81,15 +81,15 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(b == true);
         CPPUNIT_ASSERT(i ==   1);
         CPPUNIT_ASSERT(j ==   2);
-	b = collatz_read(r, i, j);
+        b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
         CPPUNIT_ASSERT(i ==   3);
         CPPUNIT_ASSERT(j ==   4);
-	b = collatz_read(r, i, j);
+        b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
         CPPUNIT_ASSERT(i ==   5);
         CPPUNIT_ASSERT(j ==   6);
-	b = collatz_read(r, i, j);
+        b = collatz_read(r, i, j);
         CPPUNIT_ASSERT(b == true);
         CPPUNIT_ASSERT(i ==   7);
         CPPUNIT_ASSERT(j ==   8);}
