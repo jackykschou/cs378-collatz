@@ -19,7 +19,7 @@ void generates(int range) //note that 1000000 % range must be 0
 	ofstream file;
 	file.open("meta.txt");
 
-	for(int i; i <= 1000000; i += range)
+	for(int i = 1; i <= 1000000; i += range)
 	{
 		get_max_length(i, i + range, file);
 	}
@@ -62,8 +62,11 @@ int cycle_length(int x)
 		}
 		else
 		{
-			x = x % 2 ? (x + x << 1 + 1) : (x >> 1);
-			numbers.push(x);
+			x = (x % 2) ? (x + (x << 1) + 1) : (x >> 1);
+			if(x <= 1000000 && x > 0)
+			{
+				numbers.push(x);
+			}
 		}
 	}
 
@@ -73,8 +76,8 @@ int cycle_length(int x)
     	cycle_table[numbers.top()] = len++;
     	numbers.pop();
     }
-
-    return len - 1;
+    cycle_table[numbers.top()] = len;
+    return len;
 }
 
 int main()
