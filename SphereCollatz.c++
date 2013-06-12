@@ -19,6 +19,10 @@
 #include <cassert>  // assert
 #include <iostream> // cin, cout, ios_base, endl, istream, ostream
 
+using namespace std;
+
+int cycle_table[1000001] = {}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
+
 // ------------
 // collatz_read
 // ------------
@@ -38,15 +42,21 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 
 int cycle_length(int x)
 {
-    int result = 1;
 
-    while(x != 1)
+    if(x <= 1000000 && x > 0 && cycle_table[x])
     {
-        result++;
-        x = (x % 2) ? (x * 3 + 1) : (x / 2);
+        return cycle_table[x];
     }
+    else
+    {
+        int len = 1 + cycle_length(x % 2 ? (x + (x << 1) + 1) : (x >> 1));
+        if(x <= 1000000 && x > 0)
+        {
+            cycle_table[x] = len;
+        }
 
-    return result;
+        return len;
+    }
 }
 
 // ------------
@@ -98,6 +108,9 @@ void collatz_print (std::ostream& w, int i, int j, int v) {
 // -------------
 
 void collatz_solve (std::istream& r, std::ostream& w) {
+
+    cycle_table[1] = 1;
+
     int i;
     int j;
     while (collatz_read(r, i, j)) {
