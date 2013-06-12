@@ -13,6 +13,8 @@
 
 #include "Collatz.h"
 
+int cycle_table[1000001] = {0, 1}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
+
 // ------------
 // collatz_read
 // ------------
@@ -87,13 +89,5 @@ void collatz_solve (std::istream& r, std::ostream& w) {
 
 int cycle_length(int x)
 {
-	int result = 1;
-
-	while(x != 1)
-	{
-		result++;
-		x = (x % 2) ? (x * 3 + 1) : (x / 2);
-	}
-
-	return result;
+	return cycle_table[x];
 }

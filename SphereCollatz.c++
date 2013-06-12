@@ -19,6 +19,8 @@
 #include <cassert>  // assert
 #include <iostream> // cin, cout, ios_base, endl, istream, ostream
 
+int cycle_table[1000001] = {0, 1}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
+
 // ------------
 // collatz_read
 // ------------
