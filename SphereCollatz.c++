@@ -18,6 +18,7 @@
 
 #include <cassert>  // assert
 #include <iostream> // cin, cout, ios_base, endl, istream, ostream
+#include <stack>
 
 using namespace std;
 
@@ -42,21 +43,37 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 
 int cycle_length(int x)
 {
+    stack<int> numbers; //stores any numbers that are on the path of finding the cycle length
+    numbers.push(x);
 
-    if(x <= 1000000 && x > 0 && cycle_table[x])
+    int len;
+    bool done = false;
+
+    while(!done)
     {
-        return cycle_table[x];
-    }
-    else
-    {
-        int len = 1 + cycle_length(x % 2 ? (x + (x << 1) + 1) : (x >> 1));
-        if(x <= 1000000 && x > 0)
+        if(x <= 1000000 && x > 0 && cycle_table[x])
         {
-            cycle_table[x] = len;
+            done = true;
+            len = cycle_table[x];
         }
-
-        return len;
+        else
+        {
+            x = (x % 2) ? (x + (x << 1) + 1) : (x >> 1);
+            if(x <= 1000000 && x > 0)
+            {
+                numbers.push(x);
+            }
+        }
     }
+
+    //fill the cache
+    while(numbers.size() != 1)
+    {
+        cycle_table[numbers.top()] = len++;
+        numbers.pop();
+    }
+    cycle_table[numbers.top()] = len;
+    return len;
 }
 
 // ------------

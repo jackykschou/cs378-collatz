@@ -10,14 +10,14 @@
 
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
-//#include <array>
+#include <stack>
 
 #include "Collatz.h"
 
 using namespace std;
 
 //static array<int, 1000001> cycle_table = {{0, 1}}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
-int cycle_table[1000001] = {}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
+int cycle_table[1000001] = {{0, 1}}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
 
 // ------------
 // collatz_read
@@ -96,19 +96,35 @@ void collatz_solve (std::istream& r, std::ostream& w) {
 
 int cycle_length(int x)
 {
+    stack<int> numbers; //stores any numbers that are on the path of finding the cycle length
+    numbers.push(x);
 
-    if(x <= 1000000 && x > 0 && cycle_table[x])
+    int len;
+    bool done = false;
+
+    while(!done)
     {
-        return cycle_table[x];
-    }
-    else
-    {
-        int len = 1 + cycle_length(x % 2 ? (x + (x << 1) + 1) : (x >> 1));
-        if(x > 0 && x <= 1000000)
+        if(x <= 1000000 && x > 0 && cycle_table[x])
         {
-            cycle_table[x] = len;
+            done = true;
+            len = cycle_table[x];
         }
-
-        return len;
+        else
+        {
+            x = (x % 2) ? (x + (x << 1) + 1) : (x >> 1);
+            if(x <= 1000000 && x > 0)
+            {
+                numbers.push(x);
+            }
+        }
     }
+
+    //fill the cache
+    while(numbers.size() != 1)
+    {
+        cycle_table[numbers.top()] = len++;
+        numbers.pop();
+    }
+    cycle_table[numbers.top()] = len;
+    return len;
 }
