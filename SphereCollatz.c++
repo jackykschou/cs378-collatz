@@ -41,7 +41,7 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 //cycle_length
 //----------
 
-int cycle_length(int x)
+int cycle_length(unsigned int x)
 {
     stack<int> numbers; //stores any numbers that are on the path of finding the cycle length
     numbers.push(x);

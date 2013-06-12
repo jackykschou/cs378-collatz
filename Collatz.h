@@ -13,7 +13,7 @@
 
 #include <iostream> // istream, ostream
 
-int cycle_length(int);
+int cycle_length(unsigned int);
 
 // ------------
 // collatz_read

@@ -17,7 +17,7 @@
 using namespace std;
 
 //static array<int, 1000001> cycle_table = {{0, 1}}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
-int cycle_table[1000001] = {{0, 1}}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
+int cycle_table[1000001] = {0, 1}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
 
 // ------------
 // collatz_read
@@ -94,7 +94,7 @@ void collatz_solve (std::istream& r, std::ostream& w) {
 //cycle_length
 //----------
 
-int cycle_length(int x)
+int cycle_length(unsigned int x)
 {
     stack<int> numbers; //stores any numbers that are on the path of finding the cycle length
     numbers.push(x);
