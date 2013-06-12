@@ -7,11 +7,11 @@
 
 using namespace std;
 
-int cycle_table[1000001] = {0, 1}; //stores the calculated cycle length of any possible number inputed (the first element is not used)
+int cycle_table[1000001] = {0, 1};
 
 void generates(int);
 void get_max_length(int, int, ofstream&);
-int cycle_length(int);
+int cycle_length(unsigned int);
 
 void generates(int range) //note that 1000000 % range must be 0
 {
@@ -45,7 +45,7 @@ void get_max_length(int start, int end, ofstream& file)
     file << v << ", ";
 }
 
-int cycle_length(int x)
+int cycle_length(unsigned int x)
 {
 	stack<int> numbers; //stores any numbers that are on the path of finding the cycle length
 	numbers.push(x);
@@ -53,29 +53,34 @@ int cycle_length(int x)
 	int len;
 	bool done = false;
 
+	//cout << "the number is " << x << endl;
 	while(!done)
 	{
 		if(x <= 1000000 && x > 0 && cycle_table[x])
 		{
 			done = true;
 			len = cycle_table[x];
+			//cout << len << endl;
 		}
 		else
 		{
 			x = (x % 2) ? (x + (x << 1) + 1) : (x >> 1);
-			if(x <= 1000000 && x > 0)
-			{
-				numbers.push(x);
-			}
+
+			numbers.push(x);
 		}
 	}
 
 	//fill the cache
     while(numbers.size() != 1)
     {
-    	cycle_table[numbers.top()] = len++;
+    	if(numbers.top() <= 1000000 && numbers.top() > 0)
+    	{
+    		cycle_table[numbers.top()] = len;
+    	}
+    	len++;
     	numbers.pop();
     }
+
     cycle_table[numbers.top()] = len;
     return len;
 }
