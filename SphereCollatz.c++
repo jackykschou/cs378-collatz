@@ -199,12 +199,12 @@ int collatz_eval (int i, int j) {
 
     //
     int lower_bound = x / INTERVAL; //index to the lower bound of the meta cache
-    while(x < y) ///examine numbers in the meta cache
+    while((x < y) && (y - x >= INTERVAL)) ///examine numbers in the meta cache
     {
         x += INTERVAL;
     }
     int upper_bound = x / INTERVAL; //index to the upper bound of the meta cache (get the maximum cycle length in the meta cache within the given boundry)
-    if( upper_bound != lower_bound && ((len = *max_element(meta_cache + lower_bound , meta_cache + upper_bound)) > v))
+    if((upper_bound - lower_bound > 1) && ((len = *max_element(meta_cache + lower_bound , meta_cache + upper_bound)) > v))
     {
         v = len;
     }
@@ -218,7 +218,8 @@ int collatz_eval (int i, int j) {
     }
 
     assert(v > 0);
-    return v;}
+    return v;
+}
 
 // -------------
 // collatz_print
@@ -285,7 +286,7 @@ int cycle_length(unsigned int x)
 
     lazy_cache[numbers.top()] = len;
     return len;
-}
+} 
 
 
 // ----

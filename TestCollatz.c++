@@ -183,6 +183,34 @@ struct TestCollatz : CppUnit::TestFixture {
         collatz_solve(r, w);
         CPPUNIT_ASSERT(w.str() == "");}
 
+    // -----------
+    // cycle_length
+    // -----------
+
+    void test_cycle_length_1(){
+        int len = cycle_length(1);
+        CPPUNIT_ASSERT(len == 1);
+    }
+
+    void test_cycle_length_2(){
+        int len = cycle_length(1000000);
+        CPPUNIT_ASSERT(len == 153);
+    }
+
+    void test_cycle_length_3(){
+        int len = cycle_length(543);
+        CPPUNIT_ASSERT(len == 137);
+    }
+
+    void test_cycle_length_4(){
+        int len = cycle_length(500000);
+        CPPUNIT_ASSERT(len == 152);
+    }
+
+    void test_cycle_length_5(){
+        int len = cycle_length(8888);
+        CPPUNIT_ASSERT(len == 35);
+    }
 
     // -----
     // suite
@@ -210,6 +238,11 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(test_solve_3);
     CPPUNIT_TEST(test_solve_4);
     CPPUNIT_TEST(test_solve_5);
+    CPPUNIT_TEST(test_cycle_length_1);
+    CPPUNIT_TEST(test_cycle_length_2);
+    CPPUNIT_TEST(test_cycle_length_3);
+    CPPUNIT_TEST(test_cycle_length_4);
+    CPPUNIT_TEST(test_cycle_length_5);
     CPPUNIT_TEST_SUITE_END();};
 
 // ----
