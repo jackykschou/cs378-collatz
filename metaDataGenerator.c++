@@ -87,5 +87,5 @@ int cycle_length(unsigned int x)
 
 int main()
 {
-	generates(1000);
+	generates(250);
 }
