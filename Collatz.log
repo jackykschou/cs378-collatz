@@ -1,0 +1,108 @@
+commit 4833961b9fb26644238182e1f8a2a0537dedd555
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Thu Jun 13 12:54:11 2013 -0500
+
+    created doxygen, some minor changes of style of code, produces all testing documents
+
+commit c867e0aea9b52d3ef49a83adb1978c074365ca39
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Thu Jun 13 09:47:04 2013 -0500
+
+    add unit tests for all functions and passes, fix an error in cases where very close input (such as 500 501) produce a wrong answer
+
+commit 64033d41b2addf393bf91e745c7e65624236d564
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Thu Jun 13 00:10:12 2013 -0500
+
+    reduce Interval of meta cache, add comments, beautify :)
+
+commit 7bb7126e1fee5a90ae417a0a7a902a6f1ce20162
+Merge: 419b402 9743c44
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 23:30:40 2013 -0500
+
+    combine lazy cache and meta cache implementation, correct misbehavior of cycle_length(), now works in Sphere version 2
+
+commit 419b4023202175aaaff04460bb8291dbe50b7371
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 18:17:17 2013 -0500
+
+    solve integer overflow
+
+commit 9743c4428cbec04f489ec441a9067c3a77868139
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 17:52:54 2013 -0500
+
+    meta cache now conformed working, solve integer overflow, since source file is too large to be accepted by Sphere, meta cache version of SphereCollatz.c++ is not made
+
+commit b5cfdf1bd0528364be97c302613bd81330892284
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 16:43:09 2013 -0500
+
+    solve stack overflow problem due to recursion
+
+commit 5a672d13757572d4253ba3674890a451a2baf7e3
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 16:29:28 2013 -0500
+
+    metagenerate should work now, correct infinit while loop and caculation error, but not fully tested yet
+
+commit a4d63e1bd8ada88b6c7378a6682e70f640bc3086
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 15:44:33 2013 -0500
+
+    remove autogentest.c++ which is used for lazy cache
+
+commit bf25a523c2e270b833b25483daac2d9937e676a5
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 15:39:41 2013 -0500
+
+    implement meta cache, metaDataGenerator.c++ to create the meta data (not conform working), correct problem of recursion stack overflow
+
+commit a5ac9941a34ca9d0e7e44723a91e892cf2f80c52
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Wed Jun 12 08:36:54 2013 -0500
+
+    implement lazy cache, storing calculated results to reduce time for later calculations. Works of Sphere version 1 but not 2
+
+commit 5af99fdb01c2fc136f3ab3be54349dbc1bfbce89
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Tue Jun 11 17:52:41 2013 -0500
+
+    remove unwanted files
+
+commit 932d047f8702a46307b6b86af48b7c339340645b
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Tue Jun 11 17:13:41 2013 -0500
+
+    modified SphereCollatz.c++, now works on Shpere with the required format
+
+commit 8198d5013717a38d277f77912d281d6acc1c6991
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Tue Jun 11 16:32:00 2013 -0500
+
+    add program that generates the input file, update RunCollatz.in with larger input
+
+commit 34f84cb1beeaf1e86305e8975c26b295558b520a
+Author: Ka Seng Chou <jackyc@cs.utexas.edu>
+Date:   Mon Jun 10 17:50:32 2013 -0500
+
+    expands unit tests, add the missing code part in Collatz.c++, all unit tests now get passed, but unit tests for functions that are not predefined are not added yet
+
+commit d90fa1120edc8de310dff7006ce2c14016786f9f
+Author: Ka Seng Chou <jackyc@cs.utexas.edu>
+Date:   Mon Jun 10 15:24:22 2013 -0500
+
+    add skeleton files
+
+commit fda99762d6d777b2c906478970c9cac41b35421c
+Author: jackykschou <jacky.kschou@yahoo.com.hk>
+Date:   Sat Jun 8 18:01:25 2013 -0500
+
+    add SphereCollatz.c++, which is accept by the easier version of Collatz in Sphere closed #7
+
+commit a933b84c8ec704c574c9ad1972d4bb607ec35069
+Author: Ka Seng Chou <jacky.kschou@yahoo.com.hk>
+Date:   Fri Jun 7 18:25:47 2013 -0700
+
+    Initial commit
