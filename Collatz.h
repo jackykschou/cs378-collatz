@@ -13,6 +13,15 @@
 
 #include <iostream> // istream, ostream
 
+// ------------
+// collatz_read
+// ------------
+
+/**
+ * calculates the cycle length of a given integer (less than 1000000)
+ * @param x an integer
+ * @return the cycle length of the parameter
+ */
 int cycle_length(unsigned int);
 
 // ------------

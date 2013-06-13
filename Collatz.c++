@@ -203,10 +203,10 @@ int collatz_eval (int i, int j) {
 
     for(; x <= y; x++) //examine numbers above the lower bound of the meta cache
     {
-    	if((len = cycle_length(x)) > v)
-    	{
-    		v = len;
-    	}
+        if((len = cycle_length(x)) > v)
+        {
+            v = len;
+        }
     }
 
     assert(v > 0);
@@ -278,4 +278,4 @@ int cycle_length(unsigned int x)
 
     lazy_cache[numbers.top()] = len;
     return len;
-}
+} 

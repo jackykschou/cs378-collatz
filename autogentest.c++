@@ -15,7 +15,7 @@ int main()
 {
 	srand(time(NULL));
 
-	generate_lines("testing.txt", 2000);
+	generate_lines("testing.txt", 1200);
 }
 
 void generate_lines(string name, int lines)
