@@ -1,4 +1,4 @@
 cs378-collatz
 =============
 
-Repository for CS378 classworks
+Project 1 of CS378 Generic Programming and the STL
